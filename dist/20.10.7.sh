@@ -362,7 +362,7 @@ do_install() {
 			esac
 		;;
 
-		centos|rhel)
+		centos|rhel|rocky)
 			if [ -z "$dist_version" ] && [ -r /etc/os-release ]; then
 				dist_version="$(. /etc/os-release && echo "$VERSION_ID")"
 			fi
@@ -454,7 +454,7 @@ do_install() {
 			echo_docker_as_nonroot
 			exit 0
 			;;
-		centos|fedora|rhel|ol)
+		centos|fedora|rhel|ol|rocky)
                         # installing centos packages
 			yum_repo="$DOWNLOAD_URL/linux/centos/$REPO_FILE"
 			if ! curl -Ifs "$yum_repo" > /dev/null; then
